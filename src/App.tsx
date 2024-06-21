@@ -1,26 +1,36 @@
+// src/App.js
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Netflix from './pages/netflix/Netflix';
+import Facebook from './pages/facebook/Facebook';
+import Youtube from './pages/youtube/Youtube';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav className='nav'>
+          <ul>
+            <li>
+              <Link to="/">Netflix</Link>
+            </li>
+            <li>
+              <Link to="/facebook">Facebook</Link>
+            </li>
+            <li>
+              <Link to="/youtube">Youtube</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Netflix />} />
+          <Route path="/facebook" element={<Facebook />} />
+          <Route path="/youtube" element={<Youtube />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
